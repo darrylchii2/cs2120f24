@@ -1,5 +1,5 @@
-import Cs2120f24.Library.propLogic.utilities
-import Cs2120f24.Library.propLogic.semantics
+import Cs2120f24.Library.propLogicWithArith.utilities
+import Cs2120f24.Library.propLogicWithArith.semantics
 
 /-!
 #### Boolean Interpretation

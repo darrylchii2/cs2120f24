@@ -1,6 +1,6 @@
 import «Cs2120f24».Lectures.«02_prop_logic».formal.syntax
 import «Cs2120f24».Lectures.«02_prop_logic».formal.semantics
-import «Cs2120f24».Lectures.«02_prop_logic».formal.model_theory.properties
+import «Cs2120f24».Lectures.«02_prop_logic».formal.properties
 
 /-!
 CS 2120-002 F24 Homework #1: Propositional Logic
@@ -78,7 +78,7 @@ ok to write "if it's not raining then this proposition is false"
 -/
 
 /-!
-A. It's raining and the sprinkler is running.
+A. It's raining and the sprinkler is running (free 5 points!)
 -/
 def formal_0 : PLExpr := sorry
 
@@ -123,15 +123,14 @@ Add a check for the validity of this expression. The *example*
 keyword in Lean asks Lean to check a term without binding a
 name to it.
 -/
-example : PLExpr :=
-  (rain ∨ sprink) ⇒
+example  : PLExpr :=
+  rain ∨ sprink ⇒
   (rain ⇒ wet) ⇒
   (sprink ⇒ wet) ⇒
   wet
 
-
 -- Write your validity check here
-#eval! is_valid ((rain ∨ sprink) ⇒ (rain ⇒ wet) ⇒(sprink ⇒ wet) ⇒ wet)
+
 
 /-!
 If (whenever it's raining, the streets are wet), then (whenever the
@@ -192,34 +191,6 @@ def equiv_elim_right := (sprink ↔ wet) ⇒ (wet ⇒ sprink)
 
 def affirm_disjunct := (wet ∨ sprink) ⇒ wet ⇒ ¬sprink
 def affirm_consequent := (sprink ⇒ wet) ⇒ wet ⇒ sprink
-def deny_antecedent := (sprink ⇒ wet) ⇒ ¬sprink ⇒ ¬wet
-
-
-
-/-
-Are they valid?
--/
-
-#eval! is_valid  and_intro
-#eval! is_valid  and_elim_left
-#eval! is_valid  and_elim_right
-
-#eval! is_valid  or_intro_left
-#eval! is_valid  or_intro_right
-#eval! is_valid  or_elim
-
-#eval! is_valid  not_intro
-#eval! is_valid  not_elim
-
-#eval! is_valid  imp_intro
-#eval! is_valid  imp_elim
-
-#eval! is_valid  equiv_intro
-#eval! is_valid  equiv_elim_left
-#eval! is_valid  equiv_elim_right
-
-#eval! is_valid  affirm_disjunct
-#eval! is_valid  affirm_consequent
-#eval! is_valid  deny_antecedent
+def deny_antecedent := (sprink ⇒ wet) ⇒ ¬wet ⇒ ¬sprink
 
 end cs2120f24
